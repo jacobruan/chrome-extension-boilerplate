@@ -7,17 +7,33 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "clean": "rm extension/content.js extension/content.js.map",
+    "clean": "rm extension/*",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production",
-    "watch": "webpack --mode development --watch"
+    "watch": "webpack --mode development --watch",
+    "prettier": "prettier --write"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.3",
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
     "@babel/preset-env": "^7.20.2",
+    "@eslint/js": "^9.9.0",
     "babel-loader": "^9.1.2",
-    "terser-webpack-plugin": "^5.3.7",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "dotenv-webpack": "^8.1.0",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-webpack-plugin": "^4.2.0",
+    "globals": "^15.9.0",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "prettier": "3.3.3",
+    "terser-webpack-plugin": "^5.3.10",
     "webpack": "^5.76.2",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-fix-style-only-entries": "^0.6.1",
+    "write-webpack-plugin": "^1.1.0",
+    "zip-webpack-plugin": "^4.0.1"
   }
 }
