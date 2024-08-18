@@ -6,13 +6,10 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const ZipPlugin = require('zip-webpack-plugin');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const WriteWebpackPlugin = require('write-webpack-plugin');
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
-
 
 const config = {
   entry: {
@@ -26,16 +23,17 @@ const config = {
   },
   devtool: 'source-map',
   module: {
-    rules: [{
-      test: /\.js$/,
-      use: 'babel-loader',
-      exclude: /node_modules/
-    },
-    {
-      test: /\.css$/,
-      use: [MiniCssExtractPlugin.loader, 'css-loader'],
-    },
-    ]
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
   },
   resolve: {
     extensions: ['.js'],
@@ -47,7 +45,7 @@ const config = {
       new TerserPlugin({
         terserOptions: {
           output: {
-            ascii_only: true
+            ascii_only: true,
           },
         },
       }),
@@ -57,32 +55,39 @@ const config = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new FixStyleOnlyEntriesPlugin({
-      silent: true
+      silent: true,
     }),
     new DotenvPlugin(),
     new ESLintPlugin({
-      extensions: ['js']
+      extensions: ['js'],
     }),
     new MiniCssExtractPlugin(),
     new CopyPlugin({
-      patterns: [{
-        from: 'src/popup',
-        to: "popup"
-      }, {
-        from: 'src/options',
-        to: "options"
-      }, {
-        from: 'src/assets',
-        to: "assets"
-      }, {
-        from: 'src/scripts',
-        to: "scripts"
-      }, {
-        from: 'src/styles',
-        to: "styles"
-      }, {
-        from: 'src/manifest'
-      }],
+      patterns: [
+        {
+          from: 'src/popup',
+          to: 'popup',
+        },
+        {
+          from: 'src/options',
+          to: 'options',
+        },
+        {
+          from: 'src/assets',
+          to: 'assets',
+        },
+        {
+          from: 'src/scripts',
+          to: 'scripts',
+        },
+        {
+          from: 'src/styles',
+          to: 'styles',
+        },
+        {
+          from: 'src/manifest',
+        },
+      ],
     }),
   ],
 };

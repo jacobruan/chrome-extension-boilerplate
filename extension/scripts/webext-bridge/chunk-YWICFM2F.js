@@ -1,0 +1,1 @@
+var ENDPOINT_RE=/^((?:background$)|devtools|popup|options|content-script|window)(?:@(\d+)(?:\.(\d+))?)?$/,parseEndpoint=o=>{const[,t,n,d]=o.match(ENDPOINT_RE)||[];return{context:t,tabId:+n,frameId:d?+d:void 0}},formatEndpoint=({context:o,tabId:t,frameId:n})=>["background","popup","options"].includes(o)?o:`${o}@${t}${n?`.${n}`:""}`;export{parseEndpoint,formatEndpoint};

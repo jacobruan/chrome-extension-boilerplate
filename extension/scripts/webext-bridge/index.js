@@ -1,0 +1,1 @@
+import{parseEndpoint}from"./chunk-YWICFM2F.js";var internalEndpoints=["background","devtools","content-script","options","popup"],isInternalEndpoint=({context:n})=>internalEndpoints.includes(n);export{isInternalEndpoint,parseEndpoint};

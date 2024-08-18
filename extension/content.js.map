@@ -1,1 +1,0 @@
-{"version":3,"file":"content.js","mappings":";AAAAA,QAAQC,IAAI","sources":["webpack://empty-project/./src/content/index.js"],"sourcesContent":["console.log(\n  `⏎··'This·prints·to·the·console·of·the·page·(injected·only·if·the·page·url·matched)',⏎`,\n);\n"],"names":["console","log"],"sourceRoot":""}
