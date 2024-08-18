@@ -6,10 +6,11 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const ZipPlugin = require('zip-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const WriteWebpackPlugin = require('write-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+// const autoprefixer = require('autoprefixer');
 
 const config = {
   entry: {
@@ -20,6 +21,11 @@ const config = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'extension'),
     clean: true,
+  },
+  devServer: {
+    static: path.resolve(__dirname, 'extension'),
+    port: 8080,
+    hot: true,
   },
   devtool: 'source-map',
   module: {
@@ -32,6 +38,40 @@ const config = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      // {
+      //   test: /\.(scss)$/,
+      //   use: [
+      //     {
+      //       // Extracts CSS for each JS file that includes CSS
+      //       loader: MiniCssExtractPlugin.loader,
+      //     },
+      //     {
+      //       // Interprets `@import` and `url()` like `import/require()` and will resolve them
+      //       loader: 'css-loader',
+      //     },
+      //     {
+      //       // Loader for webpack to process CSS with PostCSS
+      //       loader: 'postcss-loader',
+      //       options: {
+      //         postcssOptions: {
+      //           plugins: [autoprefixer],
+      //         },
+      //       },
+      //     },
+      //     {
+      //       // Loads a SASS/SCSS file and compiles it to CSS
+      //       loader: 'sass-loader',
+      //     },
+      //   ],
+      // },
+      {
+        mimetype: 'image/svg+xml',
+        scheme: 'data',
+        type: 'asset/resource',
+        generator: {
+          filename: 'icons/[hash].svg',
+        },
       },
     ],
   },
